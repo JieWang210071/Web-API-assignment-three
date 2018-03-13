@@ -205,7 +205,7 @@ apiRoutes.get('/getmovie', (req, res) => {
 });
 
 //get all movie
-apiRoutes.get('/getmovie', (req, res) => {
+apiRoutes.get('/getallmovie', (req, res) => {
 
     // find the movie
     Movie.find({}, (err, movies) => {
