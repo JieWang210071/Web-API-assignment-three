@@ -1,0 +1,424 @@
+{
+	"info": {
+		"name": "hw3",
+		"_postman_id": "ed8677d0-493f-1e5a-e5e4-4bd5e48a1dcf",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"jie\",\n\t\"name\": \"jie\",\n\t\"password\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/signup",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"signup"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "signup with exists user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"jie\",\n\t\"name\": \"jie\",\n\t\"password\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/signup",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"signup"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"jie\",\n\t\"password\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/api/signin",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"signin"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{jwt}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/api/users",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "save movie",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{jwt}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"The Godfather\",\n\t\"year\": \"1972\",\n\t\"genre\": \"Drama\",\n\t\"actors\": [\n\t\t{\n\t\t\t\"actor\": \"Marlon Brando\",\n\t\t\t\"character\": \"Don Vito Corleone\"\n\t\t},\n\t\t{\n\t\t\t\"actor\": \"Al Pacino\",\n\t\t\t\"character\": \"Michael Corleone\"\n\t\t},\n\t\t{\n\t\t\t\"actor\": \"James Caan\",\n\t\t\t\"character\": \"onny Corleone\"\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/api/savemovie",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"savemovie"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "save movie without title",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{jwt}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"year\": \"1972\",\n\t\"genre\": \"Drama\",\n\t\"actors\": [\n\t\t{\n\t\t\t\"actor\": \"Marlon Brando\",\n\t\t\t\"character\": \"Don Vito Corleone\"\n\t\t},\n\t\t{\n\t\t\t\"actor\": \"Al Pacino\",\n\t\t\t\"character\": \"Michael Corleone\"\n\t\t},\n\t\t{\n\t\t\t\"actor\": \"James Caan\",\n\t\t\t\"character\": \"onny Corleone\"\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/api/savemovie",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"savemovie"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "save movie without enough actors",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{jwt}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Iron Man\",\n\t\"year\": \"2008\",\n\t\"genre\": \"Action\",\n\t\"actors\": [\n\t\t{\n\t\t\t\"actor\": \"Robert Downey Jr\",\n\t\t\t\"character\": \"Tony Stark\"\n\t\t}\n\t]\n\t\n}"
+				},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/api/savemovie",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"savemovie"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete movie",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{jwt}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Iron Man\"\n}"
+				},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/api/deletemovie",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"deletemovie"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get movie",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{jwt}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/api/getmovie?title=Iron Man",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"getmovie"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Iron Man",
+							"equals": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all movie",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{jwt}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/api/getallmovie",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"getallmovie"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update movie",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-access-token",
+						"value": "{{jwt}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Iron Man\",\n\t\"type\": \"\",\n\t\"year\": \"2008\",\n\t\"genre\": \"Action\",\n\t\"actors\": [\n\t\t{\n\t\t\t\"actor\": \"Robert Downey Jr\",\n\t\t\t\"character\": \"Tony Stark\"\n\t\t},\n\t\t{\n\t\t\t\"actor\": \"Terrence Howard\",\n\t\t\t\"character\": \"Rhodes\"\n\t\t},\n\t\t{\n\t\t\t\"actor\": \"Jeff Bridges\",\n\t\t\t\"character\": \"Obadiah Stane\"\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "https://protected-garden-50506.herokuapp.com/api/updatemovie?title=Iron Man",
+					"protocol": "https",
+					"host": [
+						"protected-garden-50506",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"updatemovie"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Iron Man",
+							"equals": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "63ab73b2-ad3d-49ec-b582-5b610214d408",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c36c5717-3895-4805-81fa-9ba9958166f8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "96f61ea4-5021-49ae-b07e-072bc4ff2776",
+			"key": "jwt",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamllIiwidXNlcm5hbWUiOiJqaWUiLCJpYXQiOjE1MjA5MTg1MzMsImV4cCI6MTUyMTAwNDkzM30.RrVUv8t6U93fTE1vjO9d8yOmdThkThcwdzeNtvg9yqk",
+			"type": "text"
+		}
+	]
+}
