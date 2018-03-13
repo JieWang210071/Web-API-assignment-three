@@ -62,6 +62,7 @@ app.post('/signup', (req, res) => {
     });
 });
 
+//save movie
 app.post('/savemovie', (req, res, next) => {
 
     // create a sample movie
@@ -82,10 +83,9 @@ app.post('/savemovie', (req, res, next) => {
             res.json({ message: 'Movie saved successfully' });
         }
     });
-
-
 });
 
+//delete movie
 app.delete('/deletemovie', (req, res, next) => {
 
     // find the movie
@@ -100,12 +100,42 @@ app.delete('/deletemovie', (req, res, next) => {
 			res.json({ success: true, message: 'Movie deleted successfully!' });
 
 		}
-
 	});
-
-
 });
 
+//get movie
+app.get('/getmovie', (req, res) => {
+
+    // find the movie
+    Movie.findOne({
+		title: req.query.title
+	}, (err, movie) => {
+		if (err) throw err;
+
+		if (!movie) {
+			res.json({ success: false, message: 'Movie not found.' });
+		} else {
+			res.json(movie);
+		}
+	});
+});
+
+//update movie
+app.put('/updatemovie', (req, res) => {
+
+    // find and update the movie
+    Movie.findOneAndUpdate({
+		title: req.query.title
+	}, req.body, (err, movie) => {
+		if (err) throw err;
+
+		if (!movie) {
+			res.json({ success: false, message: 'Movie not found.' });
+		} else {
+			res.json(movie);
+		}
+	});
+});
 
 const apiRoutes = express.Router(); 
 
