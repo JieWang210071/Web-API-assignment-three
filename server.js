@@ -204,6 +204,16 @@ apiRoutes.get('/getmovie', (req, res) => {
 	});
 });
 
+//get all movie
+apiRoutes.get('/getmovie', (req, res) => {
+
+    // find the movie
+    Movie.find({}, (err, movies) => {
+		if (err) throw err;
+		res.json(movies);
+	});
+});
+
 //update movie
 apiRoutes.put('/updatemovie', (req, res) => {
 
