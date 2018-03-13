@@ -62,81 +62,6 @@ app.post('/signup', (req, res) => {
     });
 });
 
-//save movie
-app.post('/savemovie', (req, res, next) => {
-
-    // create a sample movie
-    const newMovie = new Movie({ 
-      title: req.body.title, 
-      year: req.body.year,
-      genre: req.body.genre,
-      actors: req.body.actors 
-    });
-
-    newMovie.save((err) => {
-        if (err) {
-            // res.json({ error: err });
-            // throw err;
-            res.json({ error: err.message });
-            return next(err);
-        } else {
-            res.json({ message: 'Movie saved successfully' });
-        }
-    });
-});
-
-//delete movie
-app.delete('/deletemovie', (req, res, next) => {
-
-    // find the movie
-    Movie.findOneAndRemove({
-		title: req.body.title
-	}, (err, movie) => {
-		if (err) throw err;
-
-		if (!movie) {
-			res.json({ success: false, message: 'delete movie failed. Movie not found.' });
-		} else if (movie) {
-			res.json({ success: true, message: 'Movie deleted successfully!' });
-
-		}
-	});
-});
-
-//get movie
-app.get('/getmovie', (req, res) => {
-
-    // find the movie
-    Movie.findOne({
-		title: req.query.title
-	}, (err, movie) => {
-		if (err) throw err;
-
-		if (!movie) {
-			res.json({ success: false, message: 'Movie not found.' });
-		} else {
-			res.json(movie);
-		}
-	});
-});
-
-//update movie
-app.put('/updatemovie', (req, res) => {
-
-    // find and update the movie
-    Movie.findOneAndUpdate({
-		title: req.query.title
-	}, req.body, (err, movie) => {
-		if (err) throw err;
-
-		if (!movie) {
-			res.json({ success: false, message: 'Movie not found.' });
-		} else {
-			res.json(movie);
-		}
-	});
-});
-
 const apiRoutes = express.Router(); 
 
 apiRoutes.post('/signin', (req, res) => {
@@ -217,6 +142,81 @@ apiRoutes.use((req, res, next) => {
 apiRoutes.get('/users', (req, res) => {
 	User.find({}, (err, users) => {
 		res.json(users);
+	});
+});
+
+//save movie
+apiRoutes.post('/savemovie', (req, res, next) => {
+
+    // create a sample movie
+    const newMovie = new Movie({ 
+      title: req.body.title, 
+      year: req.body.year,
+      genre: req.body.genre,
+      actors: req.body.actors 
+    });
+
+    newMovie.save((err) => {
+        if (err) {
+            // res.json({ error: err });
+            // throw err;
+            res.json({ error: err.message });
+            return next(err);
+        } else {
+            res.json({ message: 'Movie saved successfully' });
+        }
+    });
+});
+
+//delete movie
+apiRoutes.delete('/deletemovie', (req, res, next) => {
+
+    // find the movie
+    Movie.findOneAndRemove({
+		title: req.body.title
+	}, (err, movie) => {
+		if (err) throw err;
+
+		if (!movie) {
+			res.json({ success: false, message: 'delete movie failed. Movie not found.' });
+		} else if (movie) {
+			res.json({ success: true, message: 'Movie deleted successfully!' });
+
+		}
+	});
+});
+
+//get movie
+apiRoutes.get('/getmovie', (req, res) => {
+
+    // find the movie
+    Movie.findOne({
+		title: req.query.title
+	}, (err, movie) => {
+		if (err) throw err;
+
+		if (!movie) {
+			res.json({ success: false, message: 'Movie not found.' });
+		} else {
+			res.json(movie);
+		}
+	});
+});
+
+//update movie
+apiRoutes.put('/updatemovie', (req, res) => {
+
+    // find and update the movie
+    Movie.findOneAndUpdate({
+		title: req.query.title
+	}, req.body, (err, movie) => {
+		if (err) throw err;
+
+		if (!movie) {
+			res.json({ success: false, message: 'Movie not found.' });
+		} else {
+			res.json(movie);
+		}
 	});
 });
 
